@@ -30,5 +30,9 @@ PROJECT INI DIBUAT UNTUK TUGAS BACKEND EXPRESS JS MENGGUNAKAN ORM SEQUELIZE DAN 
 ### ORDER
 <img src="./img/db_order.jpg">
 
+# UML
+<img src="./img/CLASSDIAGRAM.jpg">
+<img src="./img/ERD.jpg">
+
 # COPYRIGHT BY © cirss_
 real inima, soalnya gada forked from-nya rekkk😂😹😹😹
