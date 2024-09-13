@@ -11,18 +11,10 @@ const Order = db.define(
             autoIncrement: true,
             allowNull: false,
         },
-        order_makanan: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
         order_date: {
             type: DataTypes.DATE,
             allowNull: false,
             defaultValue: DataTypes.NOW, 
-        },
-        total_price: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
         },
         status: {
             type: DataTypes.STRING,

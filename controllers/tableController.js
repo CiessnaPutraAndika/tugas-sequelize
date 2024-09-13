@@ -3,24 +3,17 @@ import Table from "../models/TableModels.js";
 
 export const createTable = async (req, res) => {
     try{
-        const { number_table, capacity, location_table, CustomerId } = req.body;
-        const meja = await Table.create({number_table, capacity, location_table, CustomerId: CustomerId});
+        const { number_table, capacity, location_table } = req.body;
+        const meja = await Table.create({number_table, capacity, location_table});
         res.status(200).json(meja);
     }catch(error){
-        res.status(500).json({error: error.message, message: "gagal membuat createOrder"})
+        res.status(500).json({error: error.message, message: "gagal membuat createTable"})
     }
 }
 
 export const getAllTable = async (req, res) => {
     try{
-        const meja = await Table.findAll({
-            include: [
-                {
-                    model: Customer,
-                    as: "Customer"
-                }
-            ]
-        });
+        const meja = await Table.findAll();
         res.status(200).json(meja);
     } catch (error) {
         res.status(500).json({ error: error.message, message: "seluruh data table tidak terambil" });

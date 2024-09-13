@@ -22,17 +22,23 @@ PROJECT INI DIBUAT UNTUK TUGAS BACKEND EXPRESS JS MENGGUNAKAN ORM SEQUELIZE DAN 
 # HASIL DARI DB YANG DIBUAT
 
 ### CUSTOMER
-<img src="./img/db_customer.jpg">
+<img src="./img/customer.jpg">
 
 ### TABLE(MEJA)
-<img src="./img/db_table.jpg">
+<img src="./img/table.jpg">
 
 ### ORDER
-<img src="./img/db_order.jpg">
+<img src="./img/order.jpg">
+
+### MENU
+<img src="./img/menuu.jpg">
+
+### TRANSAKSI
+<img src="./img/transaksi.jpg">
 
 # UML
-<img src="./img/CLASSDIAGRAM.jpg">
-<img src="./img/ERD.jpg">
+<img src="./img/uml_classdiagram.jpg">
+<img src="./img/uml_erd.jpg">
 
 # COPYRIGHT BY © cirss_
 real inima, soalnya gada forked from-nya rekkk😂😹😹😹

@@ -1,9 +1,9 @@
 import { DataTypes } from "sequelize";
 import db from "../utils/connection.js"
 
-const Table = db.define(
+const Transaksi = db.define(
     // memberikan nama models dengan nama User secara default, jika tidak memberikan tablename maka akan menjadi nama jamak
-    "Table", 
+    "Transaksi", 
     {
         id: {
             type: DataTypes.INTEGER,
@@ -11,23 +11,19 @@ const Table = db.define(
             autoIncrement: true,
             allowNull: false,
         },
-        number_table: {
-            type: DataTypes.STRING,
+        total_harga: {
+            type: DataTypes.INTEGER,
             allowNull: false,        
         },
-        capacity: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-        },
-        location_table: {
+        pembayaran: {
             type: DataTypes.STRING,
             allowNull: false,
-        }
+        },
     }, 
     {
-        tableName: "table"
+        tableName: "transaksi"
     }
 );
 
 
-export default Table;
+export default Transaksi;
