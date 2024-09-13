@@ -25,10 +25,10 @@ dalam project ini memiliki 3 Entitas utama yang berhubungan satu sama lain :
 5.Pesanan ke Customer: Setiap pesanan terkait dengan satu pelanggan.
     Relasi: Many-to-One
 
-5.Customer ke Transaksi: Setiap customer wajib membayar pesanan yang di pesan.
+6.Customer ke Transaksi: Setiap customer wajib membayar pesanan yang di pesan.
     Relasi: One-to-One
 
-5.Transaksi ke Menu: Setiap transaksi melihat daftar harga banyaknya menu yang dipesan.
+7.Transaksi ke Menu: Setiap transaksi melihat daftar harga banyaknya menu yang dipesan.
     Relasi: One-to-Many
 
 PROJECT INI DIBUAT UNTUK TUGAS BACKEND EXPRESS JS MENGGUNAKAN ORM SEQUELIZE DAN SISTEM CRUD
