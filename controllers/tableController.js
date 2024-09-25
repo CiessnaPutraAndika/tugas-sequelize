@@ -3,8 +3,8 @@ import Table from "../models/TableModels.js";
 
 export const createTable = async (req, res) => {
     try{
-        const { number_table, capacity, location_table } = req.body;
-        const meja = await Table.create({number_table, capacity, location_table});
+        const { number_table, capacity, location_table, CustomerId } = req.body;
+        const meja = await Table.create({number_table, capacity, location_table, CustomerId: CustomerId});
         res.status(200).json(meja);
     }catch(error){
         res.status(500).json({error: error.message, message: "gagal membuat createTable"})
@@ -13,7 +13,14 @@ export const createTable = async (req, res) => {
 
 export const getAllTable = async (req, res) => {
     try{
-        const meja = await Table.findAll();
+        const meja = await Table.findAll({
+            include: [
+                {
+                    model: Customer,
+                    as: "Customer",
+                },
+            ]
+        });
         res.status(200).json(meja);
     } catch (error) {
         res.status(500).json({ error: error.message, message: "seluruh data table tidak terambil" });
@@ -23,7 +30,14 @@ export const getAllTable = async (req, res) => {
 export const getTableById = async (req, res) => {
     try{
         const { id } = req.params;
-        const meja = await Table.findByPk(id);
+        const meja = await Table.findByPk(id, {
+            include: [
+                {
+                    model: Customer,
+                    as: "Customer",
+                },
+            ]
+        });
         if (!meja) {
             return res.status(404).json({ message: "id table tidak ditemukan" });
         }
@@ -46,8 +60,8 @@ export const deleteTable = async (req, res) => {
 export const updateTable = async (req, res) => {
     try{
         const { id } = req.params;
-        const { number_table, capacity, location_table } = req.body;
-        const [updated] = await Table.update({ number_table, capacity, location_table }, { where: { id } });
+        const { number_table, capacity, location_table, CustomerId } = req.body;
+        const [updated] = await Table.update({ number_table, capacity, location_table, CustomerId: CustomerId }, { where: { id } });
         const updatedTable = await Table.findByPk(id);
         // JIKA TIDAK ADA YANG TERUPDATE MAKA AKAN ERROR
         if (updated === 0){

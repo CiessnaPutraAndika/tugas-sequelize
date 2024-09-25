@@ -7,10 +7,6 @@ export const getAllTransaksi = async (req, res) => {
         const transaksi = await Transaksi.findAll({
             include: [
                 {
-                    model: Menu,
-                    as: "Menu",
-                },
-                {
                     model: Customer,
                     as: "Customer",
                 },
@@ -30,11 +26,7 @@ export const getTransaksiById = async (req, res) => {
                 {
                     model: Customer,
                     as: "Table",
-                },
-                {
-                    model: Menu,
-                    as: "Menu",
-                },
+                },                
             ],
         }); // Menggunakan findByPk untuk mencari berdasarkan primary key
         if (!transaksi) {
@@ -48,8 +40,8 @@ export const getTransaksiById = async (req, res) => {
 
 export const createTransaksi = async (req, res) => {
     try{
-        const { total_harga, pembayaran, CustomerId, MenuId } = req.body;
-        const transaksi = await Transaksi.create({total_harga, pembayaran, CustomerId: CustomerId, MenuId: MenuId});
+        const { total_harga, pembayaran, CustomerId } = req.body;
+        const transaksi = await Transaksi.create({total_harga, pembayaran, CustomerId: CustomerId});
         res.status(200).json(transaksi);
     }catch(error){
         res.status(500).json({error: error.message, message: "gagal membuat createTransaksi"})
@@ -59,8 +51,8 @@ export const createTransaksi = async (req, res) => {
 export const updateTransaksi = async (req, res) => {
     try{
         const { id } = req.params;
-        const { total_harga, pembayaran, CustomerId, MenuId } = req.body;
-        const [updated] = await Transaksi.update({ total_harga, pembayaran, CustomerId: CustomerId, MenuId: MenuId }, { where: { id } });
+        const { total_harga, pembayaran, CustomerId } = req.body;
+        const [updated] = await Transaksi.update({ total_harga, pembayaran, CustomerId: CustomerId }, { where: { id } });
         const updatedTransaksi = await Transaksi.findByPk(id);
         // JIKA TIDAK ADA YANG TERUPDATE MAKA AKAN ERROR
         if (updated === 0){

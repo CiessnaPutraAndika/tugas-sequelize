@@ -22,6 +22,10 @@ const Menu = db.define (
             type: DataTypes.INTEGER,
             allowNull: false
         },
+        gambar: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
     },
     {
         tableName: "menu"

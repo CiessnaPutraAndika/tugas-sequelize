@@ -1,5 +1,4 @@
 import Customer from "../models/CustomerModels.js";
-import Menu from "../models/MenuModels.js";
 import Order from "../models/OrderModels.js";
 import Table from "../models/TableModels.js";
 
@@ -10,10 +9,6 @@ export const getAllOrder = async (req, res) => {
                 {
                     model: Customer,
                     as: "Customer"
-                },
-                {
-                    model: Menu,
-                    as: "Menu",
                 },
                 {
                     model: Table,
@@ -37,10 +32,6 @@ export const getOrderById = async (req, res) => {
                     as: "Customer"
                 },
                 {
-                    model: Menu,
-                    as: "Menu",
-                },
-                {
                     model: Table,
                     as: "Table",
                 },
@@ -57,8 +48,8 @@ export const getOrderById = async (req, res) => {
 
 export const createOrder = async (req, res) => {
     try{
-        const { status, CustomerId, TableId, MenuId } = req.body;
-        const ordered = await Order.create({status, CustomerId:CustomerId, TableId : TableId, MenuId: MenuId});
+        const { status, CustomerId, TableId } = req.body;
+        const ordered = await Order.create({status, CustomerId:CustomerId, TableId : TableId});
         res.status(200).json(ordered);
     }catch(error){
         res.status(500).json({error: error.message, message: "gagal membuat createOrder"})
@@ -68,8 +59,8 @@ export const createOrder = async (req, res) => {
 export const updateOrder = async (req, res) => {
     try{
         const { id } = req.params;
-        const { status, TableId, CustomerId, MenuId } = req.body;
-        const [updated] = await Order.update({ status, TableId: TableId, CustomerId: CustomerId, MenuId: MenuId }, { where: { id } });
+        const { status, TableId, CustomerId } = req.body;
+        const [updated] = await Order.update({ status, TableId: TableId, CustomerId: CustomerId }, { where: { id } });
         const updatedOrder = await Order.findByPk(id);        
         if (updated === 0){
             res.status(404).json({error: error.message, message: "order tidak ter-update"})
