@@ -10,25 +10,28 @@ dalam project ini memiliki 3 Entitas utama yang berhubungan satu sama lain :
 5.Transaksi (Pembayaran): Transaksi yang dilakukan pelanggan.
 
 # RELASI ANTAR ENTITAS
-1.Meja ke Pelanggan: Setiap meja bisa dipesan oleh satu pelanggan, tetapi tidak setiap waktu.
+1.Pelanggan ke Meja: Setiap pelanggan hanya bisa memilih/memesan satu meja dan sebaliknya.
     Relasi: One-to-One
 
-2.Pelanggan ke Menu : Setiap pelanggan bisa melihat beberapa menu untuk dipesan.
+2.Pelanggan ke Menu : Setiap pelanggan bisa memilih beberapa menu untuk dipesan dan sebaliknya.
     Relasi: One-to-Many
 
-3.Pelanggan ke Pesanan(Order) : Customer dapat memesan banyak Orderan
+3.Pelanggan ke Pesanan(Order) : Setiap pelanggan dapat memesan banyak Orderan dan sebaliknya.
     Relasi: One-to-Many
 
-4.Pesanan(Order) ke Menu: Dalam satu kali pesanan dapat memesan banyak menu.
+4.Pesanan(Order) ke Pelanggan: Banyaknya setiap pesanan terkait dengan satu pelanggan.
+    Relasi: Many-to-One
+    
+5.Pesanan(Order) ke Menu: Dalam satu kali pesanan(order) dapat memesan banyak menu dan sebaliknya.
+    Relasi: One-to-Many
+    
+6.Meja ke Pesanan(order): Satu meja dapat menerima banyaknya pesanan(order) yang dipesan dan sebaliknya.
     Relasi: One-to-Many
 
-5.Pesanan(Order) ke Meja: Banyaknya setiap pesanan terkait dengan satu meja yang dipesan oleh pelanggan.
+7.Pesanan(Order) ke Meja: Banyaknya setiap pesanan hanya terkait dengan satu meja yang dipesan oleh pelanggan.
     Relasi: Many-to-One
 
-6.Pesanan(Order) ke Customer: Banyaknya setiap pesanan terkait dengan satu pelanggan.
-    Relasi: Many-to-One
-
-7.Customer ke Transaksi: Setiap customer wajib membayar atau melakukan transaksi pesanan yang di pesan.
+8.Customer ke Transaksi: Setiap customer dapat membayar atau melakukan transaksi dengan hanya sekali transaksi.
     Relasi: One-to-One
     
 
